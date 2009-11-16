@@ -1,0 +1,21 @@
+es:
+  interface:
+    admin:
+      forums: Foros
+    site:
+      forums: Foros
+  tog_forum:
+    plugin_title: Foros
+    site:
+      no_forums: Aún no hay foros.
+    admin:
+      create_forum: Crear foro
+      forum_details: Detalles
+      save: Guardar
+      edit: Editar
+      delete: Borrar
+      delete_confirmation: ¿De verdad quieres borrar este foro?
+    model:
+      title: Título
+      topics: Temas
+      last_post: Último post
