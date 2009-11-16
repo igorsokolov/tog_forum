@@ -25,45 +25,9 @@ Plugin requirements
 Install
 -------
 
-* Install plugin form source:
-
 <pre>
-ruby script/plugin install git@github.com:jacqui/tog_forum.git
-
+rake rails:template LOCATION=http://tr.im/aspgems_tog_forum
 </pre>
-
-* Generate installation migration:
-
-<pre>
-ruby script/generate migration install_tog_forum
-</pre>
-
-
-	  with the following content:
-
-<pre>
-class InstallTogForum < ActiveRecord::Migration
-  def self.up
-    migrate_plugin "tog_forum", 1
-  end
-
-  def self.down
-    migrate_plugin "tog_forum", 0
-  end
-end
-</pre>
-
-* Add tog_forums's routes to your application's config/routes.rb
-
-<pre>
-map.routes_from_plugin 'tog_forum'
-</pre> 
-
-* And finally...
-
-<pre> 
-rake db:migrate
-</pre> 
 
 More
 -------
