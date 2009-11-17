@@ -39,19 +39,21 @@
         <% end %>
       </table>
 
-      <h3>Add your reply!</h3>
+      <% unless @topic.locked? %>
+	<h3>Add your reply!</h3>
 
-      <% if logged_in? %>
-        <% form_for :post, :url => {:controller=>"posts", :action=>"create", :forum_id => @forum, :topic_id => @topic } do |f| %>
-            <p>
-              <%= f.text_area :body, :class => 'fieldbox', :size => '90x10' %>
-            </p>            
-          <div class="actions">
-            <%= submit_tag 'post message', {:class=>"button mainaction"} %>
-          </div>
+	<% if logged_in? %>
+	  <% form_for :post, :url => {:controller=>"posts", :action=>"create", :forum_id => @forum, :topic_id => @topic } do |f| %>
+	    <p>
+	      <%= f.text_area :body, :class => 'fieldbox', :size => '90x10' %>
+	    </p>            
+	    <div class="actions">
+	      <%= submit_tag 'post message', {:class=>"button mainaction"} %>
+	    </div>
+	  <% end %>
+        <% else %>
+	  Only registered users can add post to this forum.
         <% end %>
-      <% else %>
-        Only registered users can add post to this forum.
       <% end %>
     </div>
   </div>

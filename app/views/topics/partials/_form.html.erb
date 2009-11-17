@@ -7,4 +7,12 @@
     <label for="forum_topic_body">Body</label>
     <%= f.text_area :body, :class => 'fieldbox', :size => '60x10' %>
   </p>
+  <p>
+    <label for="forum_topic_sticky">Sticky?</label>
+    <%= f.check_box :sticky, :class => 'fieldbox' %>
+  </p>
+  <p>
+    <label for="forum_topic_locked">Locked?</label>
+    <%= f.check_box :locked, :class => 'fieldbox' %>
+  </p>
 </div>

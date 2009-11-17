@@ -1,0 +1,15 @@
+<div class="titleB">Forum <%=h @forum.title %>: Edit Topic</div>
+<br />
+
+<%= error_messages_for :topic %>
+
+
+<% form_for @topic, :url => forum_topic_path(@topic), :html => { :method => :put } do |f| %>
+  <fieldset>
+    <legend>Topic details</legend>
+    <%= render :partial => "/topics/partials/form", :locals => { :f => f } %>
+    <div class="actions">
+      <%= submit_tag 'Save topic', :class => "button mainaction" %>
+    </div>
+  </fieldset>
+<% end %>
