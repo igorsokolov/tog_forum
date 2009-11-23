@@ -1,6 +1,6 @@
-<h2 class="clearfix"><span>Forum <%=h @forum.title %></span></h2>
+<h2 class="clearfix"><span><%= I18n.t('tog_forum.views.forums.title', :forum_title => @forum.title) %></span></h2>
 
-<p><%= link_to "add a topic", new_forum_topic_path(@forum), :class => 'button add' %></p>
+<p><%= link_to I18n.t('tog_forum.site.create_topic'), new_forum_topic_path(@forum), :class => 'button add' %></p>
 
 <div class="portlet portletB" id="topics_list">
   <div class="portlet_content">

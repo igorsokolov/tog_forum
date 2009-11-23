@@ -8,6 +8,8 @@ es:
     plugin_title: Foros
     site:
       no_forums: Aún no hay foros.
+      create_topic: Añadir tema
+      post_topic: Guardar tema
     admin:
       create_forum: Crear foro
       forum_details: Detalles
@@ -18,4 +20,20 @@ es:
     model:
       title: Título
       topics: Temas
+      body: Cuerpo
+      sticky: Destacado
+      locked: Bloqueado
       last_post: Último post
+    views:
+      forums:
+        title: Foro {{forum_title}}
+      topics:
+        add_topic_to_forum: "Foro {{forum_title}}: Añadir tema"
+        topic_details: Detalles
+        edit_topic: Editar tema
+      posts:
+        replies: Respuestas
+        no_replies: No hay respuestas
+        add_reply: Responder
+        post_message: crear respuesta
+        only_registered_users: Sólo los usuarios registrados pueden escribir en este foro        

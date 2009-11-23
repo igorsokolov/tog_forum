@@ -1,4 +1,4 @@
-<h2 class="clearfix"><span>Forum <%= link_to @forum.title, forum_path(@forum) %>: <%= @topic.title %></span></h2>
+<h2 class="clearfix"><span><%= I18n.t('tog_forum.views.forums.title', :forum_title => link_to(@forum.title, forum_path(@forum))) %>: <%= @topic.title %></span></h2>
 
 
 <div class="portlet portletB clearfix" id="topic_posts_list">
@@ -14,13 +14,13 @@
       <%= render :partial => "/topics/partials/highlighted_post", :object => @highlighted_post unless @highlighted_post.blank? %>
       <br />
       
-      <h3>Replies</h3>
+      <h3><%= I18n.t('tog_forum.views.posts.replies') %></h3>
       
 
       <table class="tableB">
         <% if @posts.blank? %>
           <tr>
-             <td colspan="2">No replies found!</td>
+             <td colspan="2"><%= I18n.t('tog_forum.views.posts.no_replies') %></td>
           </tr>
         <% else %>
           <tfoot>
@@ -40,7 +40,7 @@
       </table>
 
       <% unless @topic.locked? %>
-	<h3>Add your reply!</h3>
+	<h3><%= I18n.t('tog_forum.views.posts.add_reply') %></h3>
 
 	<% if logged_in? %>
 	  <% form_for :post, :url => {:controller=>"posts", :action=>"create", :forum_id => @forum, :topic_id => @topic } do |f| %>
@@ -48,11 +48,11 @@
 	      <%= f.text_area :body, :class => 'fieldbox', :size => '90x10' %>
 	    </p>            
 	    <div class="actions">
-	      <%= submit_tag 'post message', {:class=>"button mainaction"} %>
+	      <%= submit_tag I18n.t('tog_forum.views.posts.post_message'), {:class=>"button mainaction"} %>
 	    </div>
 	  <% end %>
         <% else %>
-	  Only registered users can add post to this forum.
+	  <%= I18n.t('tog_forum.views.posts.only_registered_users') %>
         <% end %>
       <% end %>
     </div>

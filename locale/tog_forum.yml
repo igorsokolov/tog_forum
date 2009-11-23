@@ -8,6 +8,8 @@ en:
     plugin_title: Forums
     site:
       no_forums: No forums yet.
+      create_topic: add a topic
+      post_topic: Post topic
     admin:
       create_forum: Create forum
       forum_details: Forum details
@@ -18,4 +20,20 @@ en:
     model:
       title: Title
       topics: Topics
+      body: Body
+      sticky: Sticky
+      locked: Locked
       last_post: Last post
+    views:
+      forums:
+        title: Forum {{forum_title}}
+      topics:
+        add_topic_to_forum: "Forum {{forum_title}}: Add Topic"
+        topic_details: Topic details
+        edit_topic: Edit topic
+      posts:
+        replies: Replies
+        no_replies: No replies found!
+        add_reply: Add your reply!
+        post_message: post message
+        only_registered_users: Only registered users can add post to this forum.

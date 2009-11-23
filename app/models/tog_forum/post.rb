@@ -1,10 +1,10 @@
 module TogForum
   class Post < ActiveRecord::Base
     set_table_name "tog_forum_posts"
-    
+
     white_list :only => [ :body ]
 
-    
+
     belongs_to :user
     belongs_to :topic, :class_name => "TogForum::Topic"
     validates_length_of :body, :minimum => 4
@@ -16,7 +16,7 @@ module TogForum
       topic.update_attributes :last_post_at => created_at,
                               :last_post_by => user_id
     end
-    
+
     def poster_profile
       self.user.profile rescue nil
     end

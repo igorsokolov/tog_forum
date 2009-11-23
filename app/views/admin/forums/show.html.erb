@@ -1,7 +1,7 @@
   <div class="portlet portletB" id="topics_list">
     <h2 class="clearfix">
-      <span style="float: right; width: 10%;"><%= link_to "add a topic", new_forum_topic_path(@forum) %></span>
-      <span style="float: right; width: 90%;"><%=h @forum.title %></span>
+      <span style="float: right; width: 15%;"><%= link_to I18n.t('tog_forum.site.create_topic'), new_forum_topic_path(@forum) %></span>
+      <span style="float: right; width: 85%;"><%=h @forum.title %></span>
     </h2>
 
   <div class="portlet_content">
