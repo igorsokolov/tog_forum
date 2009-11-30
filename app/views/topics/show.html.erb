@@ -39,22 +39,22 @@
         <% end %>
       </table>
 
-      <% unless @topic.locked? %>
-	<h3><%= I18n.t('tog_forum.views.posts.add_reply') %></h3>
+			<% unless @topic.locked? %>
+				<h3><%= I18n.t('tog_forum.views.posts.add_reply') %></h3>
 
-	<% if logged_in? %>
-	  <% form_for :post, :url => {:controller=>"posts", :action=>"create", :forum_id => @forum, :topic_id => @topic } do |f| %>
-	    <p>
-	      <%= f.text_area :body, :class => 'fieldbox', :size => '90x10' %>
-	    </p>            
-	    <div class="actions">
-	      <%= submit_tag I18n.t('tog_forum.views.posts.post_message'), {:class=>"button mainaction"} %>
-	    </div>
-	  <% end %>
-        <% else %>
-	  <%= I18n.t('tog_forum.views.posts.only_registered_users') %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+				<% if logged_in? %>
+					<% form_for :post, :url => {:controller=>"posts", :action=>"create", :forum_id => @forum, :topic_id => @topic } do |f| %>
+						<p>
+							<%= f.text_area :body, :class => 'fieldbox', :size => '90x10' %>
+						</p>            
+						<div class="actions">
+							<%= submit_tag I18n.t('tog_forum.views.posts.post_message'), {:class=>"button mainaction"} %>
+						</div>
+					<% end %>
+				<% else %>
+					<%= I18n.t('tog_forum.views.posts.only_registered_users') %>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
 </div>

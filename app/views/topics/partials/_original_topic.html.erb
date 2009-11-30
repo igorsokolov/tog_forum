@@ -1,13 +1,20 @@
 <table class="tableB">
   <thead>
     <tr class="pair original_message">
-      <th>
-        originally posted by <%= link_to original_topic.user.login, profile_path(original_topic.poster_profile) %> on <%= I18n.l(original_topic.created_at, :format => :long) %>
-      </th>
+			<th>
+				<%= I18n.t('tog_forum.views.topics.posted', 
+									 :user => link_to(original_topic.user.login, profile_path(original_topic.poster_profile)),
+									 :dtime => I18n.l(original_topic.created_at, :format => :long)) %>
+			</th>
+			<% if current_user && current_user == original_topic.user %>
+				<th>
+					<%= link_to I18n.t('tog_forum.views.topics.edit_topic'), edit_forum_topic_path(original_topic.forum.id, original_topic.id), :class => 'button' %>
+				</th>
+			<% end %>
     </tr>
   </thead>
   <tr>
-    <td>
+    <td colspan="2">
       <%= original_topic.body %>
     </td>
   </tr>

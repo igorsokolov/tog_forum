@@ -4,6 +4,9 @@ es:
       forums: Foros
     site:
       forums: Foros
+      forum: foro
+      topic: tema
+      posts: Posts
   tog_forum:
     plugin_title: Foros
     site:
@@ -17,6 +20,8 @@ es:
       edit: Editar
       delete: Borrar
       delete_confirmation: ¿De verdad quieres borrar este foro?
+      forum_created: El foro se ha creado con éxito
+      forum_deleted: El foro se ha eliminado con éxito
     model:
       title: Título
       topics: Temas
@@ -31,9 +36,15 @@ es:
         add_topic_to_forum: "Foro {{forum_title}}: Añadir tema"
         topic_details: Detalles
         edit_topic: Editar tema
+        posted: Publicado por {{user}} el {{dtime}}
+        created: Tema creado con éxito
+        topic_and_post_created: Tema y post creados con éxito
+        no_topic_created: "Ha ocurrido un error al crear el tema: {{error}}"
+        updated: Tema actualizado con éxito
       posts:
         replies: Respuestas
         no_replies: No hay respuestas
         add_reply: Responder
         post_message: crear respuesta
         only_registered_users: Sólo los usuarios registrados pueden escribir en este foro        
+        no_post_created: "Ha ocurrido un error al crear el post: {{error}}"

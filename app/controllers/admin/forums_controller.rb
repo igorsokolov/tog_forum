@@ -38,7 +38,7 @@ class Admin::ForumsController < Admin::BaseController
 
     respond_to do |format|
       if @forum.save
-        flash[:notice] = 'The forum was successfully created.'
+        flash[:ok] = I18n.t('tog_forum.admin.forum_created')
         format.html { redirect_to(admin_forum_url(@forum)) }
         format.rss { render :rss => @forum, :status => :created, :location => @forum }
       else
@@ -68,7 +68,7 @@ class Admin::ForumsController < Admin::BaseController
   def destroy
 
     if @forum.destroy
-      flash[:notice] = "The forum was successfully deleted."
+      flash[:ok] = I18n.t('tog_forum.admin.forum_deleted')
     else
       flash[:error] = "An error occurred: #{@forum.errors.full_messages}"
     end

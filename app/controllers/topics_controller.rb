@@ -54,22 +54,22 @@ class TopicsController < ApplicationController
           @post.user = current_user
           
           if @post and @post.valid? and @post.save
-            flash[:ok] = "Topic and post successfuly created"
+            flash[:ok] = I18n.t('tog_forum.views.topics.topic_and_post_created')
             format.html { redirect_to forum_topic_path(@forum, @topic) }
             format.xml { render :xml => @topic, :status => :created, :location => forum_topic_url(@forum, @topic) }
           else
-            flash[:error] = "Post creation unsuccessful: #{@post.errors.full_messages}"
+            flash[:error] = I18n.t('tog_forum.views.posts.no_post_created', :error => @post.errors.full_messages)
             format.html { render :action => "new" }
             format.xml { render :xml => @post.errors, :status => :unprocessable_entity }
           end
         else
-          flash[:ok] = "Topic successfully created"
+          flash[:ok] = I18n.t('tog_forum.views.topics.created')
           format.html { redirect_to forum_topic_path(@forum, @topic) }
           format.xml { render :xml => @topic, :status => :created, :location => forum_topic_url(@forum, @topic) }
         end
         
       else
-        flash[:error] = "Topic creation unsuccessful: #{@topic.errors.full_messages}"
+        flash[:error] = I18n.t('tog_forum.views.topics.no_topic_created', :error => @topic.errors.full_messages)
         format.html { render :action => "new" }
         format.xml { render :xml => @topic.errors, :status => :unprocessable_entity }
       end
@@ -82,7 +82,7 @@ class TopicsController < ApplicationController
     @topic.update_attributes(params[:topic]) if user_can_alter?
     respond_to do |format|
       if @topic.errors.empty? and user_can_alter?
-        flash[:ok] = 'Topic was successfully updated.'
+        flash[:ok] = I18n.t('tog_forum.views.topics.updated')
         format.html { redirect_to forum_topic_path(@forum, @topic) }
         format.xml { head :ok }
       elsif not user_can_alter?

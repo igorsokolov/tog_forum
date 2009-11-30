@@ -1,29 +1,29 @@
 <thead>
-  <tr>
-    <th scope="col">
-      <%= link_to_remote "topic", { :url => forum_path({:forum => @forum, :order => "title", :page => @page, :asc => @asc}), :method => :get, :update => "topics_paginated" } %>
-    </th>
-    <th scope="col">
-      replies
-    </th>
-    <th scope="col">
-      <%= link_to_remote "author", { :url => forum_path({:forum => @forum, :order => "user_id", :page => @page, :asc => @asc}), :method => :get, :update => "topics_paginated" } %>
-    </th>
-    <th scope="col">
-      <%= link_to_remote "last post", { :url => forum_path({:forum => @forum, :order => "last_post_at", :page => @page, :asc => @asc}), :method => :get, :update => "topics_paginated" } %>
-    </th>
-  </tr>
+	<tr>
+		<th scope="col">
+			<%= link_to_remote "topic", { :url => forum_path({:forum => @forum, :order => "title", :page => @page, :asc => @asc}), :method => :get, :update => "topics_paginated" } %>
+		</th>
+		<th scope="col">
+			replies
+		</th>
+		<th scope="col">
+			<%= link_to_remote "author", { :url => forum_path({:forum => @forum, :order => "user_id", :page => @page, :asc => @asc}), :method => :get, :update => "topics_paginated" } %>
+		</th>
+		<th scope="col">
+			<%= link_to_remote "last post", { :url => forum_path({:forum => @forum, :order => "last_post_at", :page => @page, :asc => @asc}), :method => :get, :update => "topics_paginated" } %>
+		</th>
+	</tr>
 </thead>
 <tfoot>
- <tr>
-  <td colspan="4" class="info_results">
-   <span class="info_items"><%= page_entries_info @topics %></span>
-   <span class="pages_navigation right">
-     <%= will_paginate @topics, :renderer => 'RemoteLinkRenderer', :remote => {:update => "topics_paginated"}, :class => "pager pager_bottom" %>
-   </span>
- </td>
- </tr>
+	<tr>
+		<td colspan="4" class="info_results">
+			<span class="info_items"><%= page_entries_info @topics, :entry_name => I18n.t('interface.site.topic') %></span>
+			<span class="pages_navigation right">
+				<%= will_paginate @topics, :renderer => 'RemoteLinkRenderer', :remote => {:update => "topics_paginated"}, :class => "pager pager_bottom" %>
+			</span>
+		</td>
+	</tr>
 </tfoot>
 <tbody>
- <%= render :partial => "/forums/partials/topic", :collection => @topics %>
+	<%= render :partial => "/forums/partials/topic", :collection => @topics %>
 </tbody>

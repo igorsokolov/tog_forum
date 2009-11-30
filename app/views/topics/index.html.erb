@@ -1,4 +1,4 @@
-<h2><%= @forum.title %> :: <%= @topic.title %> :: Posts</h2>
+<h2><%= @forum.title %> :: <%= @topic.title %> :: <%= I18n.t('interface.site.posts') %></h2>
 
 <table class="tableB">
   <thead>
@@ -15,7 +15,7 @@
   <tfoot>
     <tr>
       <td colspan="4" class="info_results">
-        <span class="info_items"><%= page_entries_info @topics, :entry_name => "topic" %></span>
+        <span class="info_items"><%= page_entries_info @topics, :entry_name => I18n.t('interface.site.topic') %></span>
         <span class="pages_navigation right">
           <%= will_paginate @topics, :container => false %>
         </span>
