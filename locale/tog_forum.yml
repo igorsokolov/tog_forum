@@ -48,3 +48,5 @@ en:
         post_message: post message
         only_registered_users: Only registered users can add post to this forum.
         no_post_created: "Post creation unsuccessful: {{error}}"
+        edit_post: Edit post
+        created: Post successfuly created

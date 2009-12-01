@@ -1,19 +1,20 @@
 class PostsController < ApplicationController
   
-  before_filter :login_required, :only => [:new, :create, :destroy, :vote_for, :vote_against]   
+  before_filter :login_required, :only => [:new, :create, :destroy]   
   before_filter :admin?, :only => [:destroy] # or post.user?
   before_filter :find_topic
   before_filter :find_post, :only => [:edit, :update, :destroy]
 
   def show
-    # @vote_for_controller_url = url_for({:controller=>"posts", :action=>"vote_for", :id => @post.id, :topic_id => @topic.id, :forum_id => @forum.id})
-    # @vote_against_controller_url = url_for({:controller=>"posts", :action=>"vote_against", :id => @post.id, :topic_id => @topic.id, :forum_id => @forum.id})
-    
     respond_to do |format|
       format.html
       format.rss { render(:layout => false) }
     end    
-  end  
+  end 
+
+	def edit
+		return false unless user_can_alter?
+	end
   
   def new
     @page = params[:page] || '1'
@@ -31,11 +32,11 @@ class PostsController < ApplicationController
     
     respond_to do |format|
       if @post.save
-        flash[:ok] = "Post successfuly created"
+        flash[:ok] = I18n.t('tog_forum.views.posts.created')
         format.html { redirect_to(forum_topic_path(@topic.forum, @topic)) }
         format.xml { render :xml => @topic, :status => :created, :location => forum_topic_url(@topic.forum, @topic) }
       else
-        flash[:error] = "Post creation unsuccessful: #{@post.errors.full_messages}"
+        flash[:error] = I18n.t('tog_forum.views.posts.no_post_created', :error => @post.errors.full_messages)
         format.html { render :action => "new" }
         format.xml { render :xml => @post.errors, :status => :unprocessable_entity }
       end
@@ -64,4 +65,8 @@ private
     @post ||= TogForum::Post.find(params[:id]) if params[:id]    
   end
 
+  def user_can_alter?
+    return false unless current_user
+    (@post and @post.user and current_user == @post.user)
+  end
 end

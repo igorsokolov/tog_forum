@@ -48,3 +48,5 @@ es:
         post_message: crear respuesta
         only_registered_users: Sólo los usuarios registrados pueden escribir en este foro        
         no_post_created: "Ha ocurrido un error al crear el post: {{error}}"
+        edit_post: Editar post
+        created: Post creado con éxito

@@ -4,6 +4,8 @@ module TogForum
 
     white_list :only => [ :title, :body ]
 
+		acts_as_rateable
+
     belongs_to :user
     belongs_to :forum, :class_name => "TogForum::Forum"
     has_many :posts, :class_name => "TogForum::Post", :dependent => :destroy, :order => "tog_forum_posts.updated_at asc"

@@ -79,7 +79,7 @@ class TopicsController < ApplicationController
   def update
     return false unless user_can_alter?
     
-    @topic.update_attributes(params[:topic]) if user_can_alter?
+    @topic.update_attributes(params[:tog_forum_topic]) if user_can_alter?
     respond_to do |format|
       if @topic.errors.empty? and user_can_alter?
         flash[:ok] = I18n.t('tog_forum.views.topics.updated')

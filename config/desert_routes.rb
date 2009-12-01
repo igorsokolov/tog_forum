@@ -2,9 +2,9 @@
 # add <tt>map.resources</tt>, here you would add just <tt>resources</tt>
 
 resources :forums do |forum|
-  forum.resources :topics, :member => { :vote_for => :post, :vote_against => :post } do |topic|
-    topic.resources :posts, :member => { :vote_for => :post, :vote_against => :post }
-  end
+  forum.resources :topics do |topic|
+    topic.resources :posts
+	end
 end
 
 namespace(:admin) do |admin|

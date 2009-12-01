@@ -1,12 +1,25 @@
 <a name="post_<%= post.id %>"></a>
 <tr class="pair">
-  <td width="50%"><%= link_to post.user.login, profile_path(post.poster_profile) %></td>
-  <td width="50%" align="right">
-    <%= I18n.l(post.updated_at, :format => :long) %>
-  </td>
+	<td colspan="2" class="col_80_20">
+		<div class="left_col">
+			<%= I18n.t('tog_forum.views.topics.posted', 
+								 :user => link_to(post.user.login, profile_path(post.poster_profile)),
+								 :dtime => I18n.l(post.created_at, :format => :long)) %>
+		</div>
+		<div class="right_col">
+			<% if current_user && current_user == post.user %>
+				<%= link_to I18n.t('tog_forum.views.posts.edit_post'), edit_forum_topic_post_path(post.topic.forum, post.topic, post), :class => 'button' %>
+			<% end %>
+		</div>
+	</td>
 </tr>
 <tr>
-  <td colspan="2">
-    <%= post.body %>
-  </td>
+	<td class="col_80_20">
+		<div class="left_col">
+			<%= post.body %>
+		</div>
+		<div class="right_col">
+			<%= render :partial => 'shared/rating', :locals => { :rateable => post } %>
+		</div>
+	</td>
 </tr>
