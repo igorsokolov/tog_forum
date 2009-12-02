@@ -24,7 +24,7 @@ class ForumsController < ApplicationController
   def show
     @forum = TogForum::Forum.find_by_id(params[:id]) || TogForum::Forum.top_level
     
-    @order = params[:order] || 'tog_forum_topics.title' #'tog_forum_topics.current_rating'
+    @order = 'tog_forum_topics.sticky desc, ' << (params[:order] || 'tog_forum_topics.title')
 
     @page = params[:page] || '1'
     @asc = (params[:asc] and params[:asc] == "desc") ? "asc" : 'desc'
