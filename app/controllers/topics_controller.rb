@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   
-  before_filter :login_required, :only => [:new, :create, :edit, :update, :vote_for, :vote_against]   
+  before_filter :login_required, :only => [:new, :create, :edit, :update]   
   before_filter :admin?, :only => [:destroy] # or post.user?
   before_filter :find_forum
   before_filter :find_topic, :only => [:show, :edit, :update, :destroy]

@@ -4,7 +4,7 @@ module TogForum
 
     white_list :only => [ :title, :body ]
 
-		acts_as_rateable
+		acts_as_voteable
 
     belongs_to :user
     belongs_to :forum, :class_name => "TogForum::Forum"

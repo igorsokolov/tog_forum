@@ -1,4 +1,3 @@
-<a name="post_<%= post.id %>"></a>
 <tr class="pair">
 	<td colspan="2" class="col_80_20">
 		<div class="left_col">
@@ -19,7 +18,7 @@
 			<%= post.body %>
 		</div>
 		<div class="right_col">
-			<%= render :partial => 'shared/rating', :locals => { :rateable => post } %>
+			<%= render :partial => 'shared/voting', :locals => { :voteable => post } %>
 		</div>
 	</td>
 </tr>

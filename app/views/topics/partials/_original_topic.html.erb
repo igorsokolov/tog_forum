@@ -21,7 +21,7 @@
 				<%= original_topic.body %>
 			</div>
 			<div class="right_col">
-				<%= render :partial => 'shared/rating', :locals => { :rateable => original_topic } %>
+				<%= render :partial => 'shared/voting', :locals => { :voteable => original_topic } %>
 			</div>
 		</td>
   </tr>
