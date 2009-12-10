@@ -1,4 +1,5 @@
 require_plugin 'tog_core'
+require_plugin 'acts_as_voteable'
 
 Tog::Interface.sections(:admin).add "Forums", "/admin/forums"        
 Tog::Interface.sections(:site).add "Forums", "/forums"
