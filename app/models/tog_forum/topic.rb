@@ -16,6 +16,11 @@ module TogForum
     validates_presence_of :title, :forum_id, :user_id, :body
     validates_associated :user
 
+    define_index do
+      indexes title
+      indexes body
+    end
+
     def last_poster
       return self.user if self.posts.blank?
       begin
@@ -44,6 +49,10 @@ module TogForum
 
     def posts_count
       self.posts.size
+    end
+
+    def self.site_search(query, options = {})
+      self.search query, options
     end
   end
 end

@@ -12,3 +12,7 @@ require "i18n" unless defined?(I18n)
 Dir[File.dirname(__FILE__) + '/locale/**/*.yml'].each do |file|
   I18n.load_path << file
 end
+
+Tog::Search.sources << 'TogForum::Forum'
+Tog::Search.sources << 'TogForum::Topic'
+Tog::Search.sources << 'TogForum::Post'

@@ -4,13 +4,16 @@ module TogForum
 
     white_list :only => [ :body ]
 
-
     belongs_to :user
     belongs_to :topic, :class_name => "TogForum::Topic"
     validates_length_of :body, :minimum => 4
     validates_presence_of :body
 
     acts_as_voteable
+
+    define_index do
+      indexes body
+    end
 
     def after_create
       topic.update_attributes :last_post_at => created_at,
@@ -21,5 +24,8 @@ module TogForum
       self.user.profile rescue nil
     end
 
+    def self.site_search(query, options = {})
+      self.search query, options
+    end
   end
 end

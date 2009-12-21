@@ -9,6 +9,10 @@ module TogForum
     has_many :posts, :through => :topics, :source => :posts, :order => "created_at DESC"
     validates_presence_of :title, :user_id
 
+    define_index do
+      indexes title
+    end
+
     def validate
       errors.add(:user_id, "must be an administrator") unless user and user.admin?
     end
@@ -23,6 +27,10 @@ module TogForum
     def self.create_top_level
       forum_title = Tog::Config['plugins.tog_core.site.name']
       self.create(:title => forum_title, :user => User.find_admin)
+    end
+
+    def self.site_search(query, options = {})
+      self.search query, options
     end
   end
 end
