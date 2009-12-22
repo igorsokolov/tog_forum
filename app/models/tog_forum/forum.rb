@@ -9,9 +9,15 @@ module TogForum
     has_many :posts, :through => :topics, :source => :posts, :order => "created_at DESC"
     validates_presence_of :title, :user_id
 
-    define_index do
-      indexes title
-    end
+    unless Tog::Plugins.settings(:tog_forum, 'search.skip_indices')
+      define_index do
+        indexes title
+      end
+
+      def self.site_search(query, options = {})
+        self.search query, options
+      end
+    end 
 
     def validate
       errors.add(:user_id, "must be an administrator") unless user and user.admin?
@@ -29,8 +35,5 @@ module TogForum
       self.create(:title => forum_title, :user => User.find_admin)
     end
 
-    def self.site_search(query, options = {})
-      self.search query, options
-    end
   end
 end

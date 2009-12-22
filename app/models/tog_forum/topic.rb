@@ -16,9 +16,15 @@ module TogForum
     validates_presence_of :title, :forum_id, :user_id, :body
     validates_associated :user
 
-    define_index do
-      indexes title
-      indexes body
+    unless Tog::Plugins.settings(:tog_forum, 'search.skip_indices')
+      define_index do
+        indexes title
+        indexes body
+      end
+
+      def self.site_search(query, options = {})
+        self.search query, options
+      end
     end
 
     def last_poster
@@ -49,10 +55,6 @@ module TogForum
 
     def posts_count
       self.posts.size
-    end
-
-    def self.site_search(query, options = {})
-      self.search query, options
     end
   end
 end

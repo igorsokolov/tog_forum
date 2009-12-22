@@ -11,8 +11,14 @@ module TogForum
 
     acts_as_voteable
 
-    define_index do
-      indexes body
+    unless Tog::Plugins.settings(:tog_forum, 'search.skip_indices')
+      define_index do
+        indexes body
+      end
+
+      def self.site_search(query, options = {})
+        self.search query, options
+      end
     end
 
     def after_create
@@ -24,8 +30,5 @@ module TogForum
       self.user.profile rescue nil
     end
 
-    def self.site_search(query, options = {})
-      self.search query, options
-    end
   end
 end

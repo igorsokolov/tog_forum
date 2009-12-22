@@ -16,3 +16,5 @@ end
 Tog::Search.sources << 'TogForum::Forum'
 Tog::Search.sources << 'TogForum::Topic'
 Tog::Search.sources << 'TogForum::Post'
+
+Tog::Plugins.settings :tog_forum, { 'search.skip_indices' => false }
