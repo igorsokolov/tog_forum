@@ -26,7 +26,7 @@ Install
 -------
 
 <pre>
-rake rails:template LOCATION=http://tr.im/aspgems_tog_forum
+rake rails:template LOCATION=http://tr.im/igorsokolov_tog_forum
 </pre>
 
 More
