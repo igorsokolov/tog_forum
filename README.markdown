@@ -27,6 +27,8 @@ Install
 
 <pre>
 rake rails:template LOCATION=http://tr.im/igorsokolov_tog_forum
+or 
+rake rails:template LOCATION=http://github.com/igorsokolov/tog_forum/raw/master/tog_forum_template.rb
 </pre>
 
 More
